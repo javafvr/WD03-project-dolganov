@@ -358,7 +358,7 @@ input.button {
 }
 .card-post__img {
   height: 140px;
-  background-color: #000;
+  background-color: none;
   border-radius: 6px;
   overflow: hidden;
   display: -webkit-box;

@@ -8,11 +8,11 @@
 			<div class="col-4">
 				<nav>
 					<ul class="footer-nav">
-						<li class="footer-nav__item"><a href="#">Главная</a></li>
-						<li class="footer-nav__item"><a href="#">Обо мне</a></li>
-						<li class="footer-nav__item"><a href="#">Работы</a></li>
-						<li class="footer-nav__item"><a href="#">Блог</a></li>
-						<li class="footer-nav__item"><a href="#">Контакты</a></li>
+						<li class="footer-nav__item"><a href="<?=HOST?>">Главная</a></li>
+						<li class="footer-nav__item"><a href="<?=HOST?>about">Обо мне</a></li>
+						<li class="footer-nav__item"><a href="<?=HOST?>portfolio">Работы</a></li>
+						<li class="footer-nav__item"><a href="<?=HOST?>blog">Блог</a></li>
+						<li class="footer-nav__item"><a href="<?=HOST?>contacts">Контакты</a></li>
 					</ul>
 				</nav>
 			</div>
