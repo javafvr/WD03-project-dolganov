@@ -2,11 +2,24 @@
   background-color: #24b14f;
   background: -webkit-gradient(linear, left top, left bottom, from(#a4d88f), to(#4c9243));
   background: -webkit-linear-gradient(top, #a4d88f, #4c9243);
-  background: -o-linear-gradient(top, (#a4d88f, #4c9243);
-  background: linear-gradient(top, (#a4d88f, #4c9243);
+  background: -o-linear-gradient(top, #a4d88f, #4c9243);
+  background: linear-gradient(top, #a4d88f, #4c9243);
 }
 
 .card-post__img {
 	background-color: #fff;
 }
+
+.button--delete{
+  font-size: 16px;
+  height: 44px;
+}
+
+.button--small{
+  font-size: 14px;
+  height: 2.2em;
+}
+
+
+
 
