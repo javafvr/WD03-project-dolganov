@@ -2,17 +2,21 @@
 
 
 if (isset($_GET['id'])) {
-	$post = R::load('posts',$_GET['id']);
+	$sql = 'SELECT 
+		posts.id, posts.title, posts.text, posts.post_img, posts.date_time, posts.update_time, posts.author_id, posts.category, 
+		users.firstname, users.lastname,
+		categories.cat_title
+		FROM `posts`
+		INNER JOIN categories ON posts.category = categories.id
+		INNER JOIN users ON posts.author_id = users.id
+		WHERE posts.id = ' . $_GET['id'] . ' LIMIT 1';
+
+	$post = R::getALL($sql)[0];
 	
+	$authorName = $post['firstname'] . " " . $post['lastname'];
+
 	$title = $post['title'];
-
-	// dd($post);
-
 }
-
-// $posts=R::find('posts', 'ORDER BY id DESC');
-
-//dd($posts);
 
 ob_start();
 include ROOT . "/templates/_parts/_header.tpl";

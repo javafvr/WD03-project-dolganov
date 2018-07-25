@@ -1,5 +1,10 @@
 <?php
 
+if (!isAdmin()) {
+	header("Location: " . HOST);
+	die();
+}
+
 $title = "Категории блога";
 
 $categories = R::find('categories', 'ORDER BY cat_title DESC');
