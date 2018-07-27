@@ -5,7 +5,7 @@
 				
 				<div class="title-1 mb-40">Удалить категорию <?=$cat['catTitle']?></div>
 				<p>Вы действительно хотите удалить категорию <strong><?=$cat['catTitle']?></strong> c id = <strong><?=$cat['id']?></strong>?</p>
-				<? require ROOT . "/templates/_parts/_errors.tpl"; ?>
+				<!-- <? require ROOT . "/templates/_parts/_errors.tpl"; ?> -->
 
 			</div>
 		</div>

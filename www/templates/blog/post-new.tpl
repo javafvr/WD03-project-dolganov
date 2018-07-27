@@ -11,6 +11,18 @@
 				<input class="input" type="text" name="postTitle" placeholder="Введите имя" data-error = 'Введите имя' data-valid='required'/>
 			</div>
 		</div>
+		<!-- Категории -->
+		<div class="row mt-40">
+			<div class="col-md-10 offset-1">
+				<div class="title-8 mb-10">Категория</div>
+				<select name="postCat" id="">
+					<?php foreach ($categories as $category){?>
+						<option value="<?=$category['id']?>"><?=$category['cat_title']?></option>
+					<?}?>
+				</select>
+			</div>
+		</div>
+		
 		<div class="row mt-30">
 			<div class="col-md-10 offset-1">
 				<div class="file-upload">
@@ -32,7 +44,9 @@
 		<div class="row mt-10">
 			<div class="col-md-10 offset-1">
 				<div class="title-8 mb-10">Содержание</div>
-				<textarea class="textarea" name="postText" placeholder="Введите сообщение" data-error = 'Введите сообщение' data-valid='required'></textarea>
+				<textarea id='ckeditor' class="textarea" name="postText" placeholder="Введите сообщение" data-error = 'Введите сообщение' data-valid='required'>
+				</textarea>
+				<? include_once ROOT . "templates/_parts/_ckEditorConnect.tpl" ?>
 			</div>
 		</div>
 		<div class="row mt-35 mb-120">

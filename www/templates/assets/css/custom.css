@@ -13,6 +13,7 @@
 .button--delete{
   font-size: 16px;
   height: 44px;
+  padding-top: 0.68em;
 }
 
 .button--small{
@@ -20,6 +21,30 @@
   height: 2.2em;
 }
 
+.file-upload__thumb {
+  width: 320px;
+}
 
+/*.page-content{
+  height: 300px;
+  background: green;
+  
+}*/
 
+html, body{
+  height: 100%;
+}
 
+body::before{
+  content:none;
+  display: none;
+}
+
+.stiky-footer{
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
