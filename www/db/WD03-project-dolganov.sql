@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 23 2018 г., 23:23
+-- Время создания: Июл 24 2018 г., 23:59
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -41,6 +41,31 @@ CREATE TABLE `about` (
 INSERT INTO `about` (`id`, `name`, `description`) VALUES
 (1, 'Дмитрий Долганов', 'web-developer'),
 (2, 'Дмитрий Долганов', 'web-developer');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `cat_title` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `categories`
+--
+
+INSERT INTO `categories` (`id`, `cat_title`) VALUES
+(1, 'Путешествия'),
+(2, 'PHP'),
+(3, '3D Печать'),
+(4, 'Java script'),
+(5, 'Работа'),
+(10, 'Java'),
+(13, '111111'),
+(14, 'Python');
 
 -- --------------------------------------------------------
 
@@ -97,7 +122,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `lastname`, `city`, `country`, `firstname`, `avatar`, `avatar_small`, `recovery_code`, `recovery_code_times`) VALUES
-(1, '123@mail.com', '$2y$10$S8R84DNPX739FhDMZDSVfOOCa2uh4iDctCKFyf0L53UGUajp9ArAq', 'admin', 'Долганов', 'Тюмень', 'Россия', 'Дмитрий', '766141962.jpg', 'small-766141962.jpg', NULL, NULL),
+(1, '123@mail.com', '$2y$10$S8R84DNPX739FhDMZDSVfOOCa2uh4iDctCKFyf0L53UGUajp9ArAq', 'admin', 'Долганов', 'Тюмень', 'Россия', 'Дмитрий', '940542343.jpg', 'small-940542343.jpg', NULL, NULL),
 (2, 'inet72@gmail.com', '$2y$10$g9hGCwcivL5tX.3Wl7deu./BwzBoS1xs15zNkjYBzatOzCuk7wrLS', 'user', 'Долганов', 'Тюмень', 'Россия', 'Дмитрий', '71564722.jpg', 'small-71564722.jpg', 'mtkjGF0eviYWM4l', 0),
 (3, 'dolganov_dmitrii@mail.ru', '$2y$10$h8KOqWEMWwJYQgyw1jPjk.KHcxQKZX3s2AuNO2HKt.PrRZiYfSZZS', 'user', 'Даздраперма', 'Гавана', 'Куба', 'Перепетуйя', '424338563.jpg', 'small-424338563.jpg', NULL, NULL),
 (4, '132434@dfdf.ru', '$2y$10$uRVAOmxiljs4zwqLxSpJle7b7pE15eTis2mJO5lBNIPEcK2leyfBm', 'user', 'Иванов', '', '', 'Дмитрий', NULL, NULL, NULL, NULL);
@@ -110,6 +135,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `role`, `lastname`, `city`, `cou
 -- Индексы таблицы `about`
 --
 ALTER TABLE `about`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `categories`
+--
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -134,6 +165,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `about`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
