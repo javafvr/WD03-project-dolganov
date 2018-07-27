@@ -31,7 +31,7 @@ if (isset($_SESSION['logged_user'])) {
 
 switch ($uri[0]) {
 	case '':
-		include "modules/main/index.php";
+		include ROOT . "modules/main/index.php";
 		break;
 
 /*USERS*/
@@ -57,27 +57,35 @@ switch ($uri[0]) {
 		break;
 
 	case 'about':
-		include "modules/about/index.php";
+		include ROOT . "modules/about/index.php";
 		break;
 
 	case 'contacts':
-		include "modules/contacts/index.php";
+		include ROOT . "modules/contacts/index.php";
 		break;
 
 	case 'profile':
-		include "modules/profile/index.php";
+		include ROOT . "modules/profile/index.php";
 		break;
 
 	case 'profile-edit':
-		include "modules/profile/edit.php";
+		include ROOT . "modules/profile/edit.php";
 		break;
 
 	case 'blog':
-		include "modules/blog/index.php";
+		include ROOT . "modules/blog/index.php";
+		break;
+
+	case 'blog/post-new':
+		include ROOT . "modules/blog/post-new.php";
+		break;
+
+	case 'blog/post':
+		include ROOT . "modules/blog/post.php";
 		break;
 	
 	default:
-		include "modules/main/index.php";
+		include ROOT . "modules/main/index.php";
 		break;
 }
  ?>

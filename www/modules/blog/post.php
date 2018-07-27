@@ -1,14 +1,22 @@
 <?php
 
-$title = "Профиль пользователя";
 
+if (isset($_GET['id'])) {
+	$post = R::load('posts',$_GET['id']);
+	
+	$title = $post['title'];
 
+	// dd($post);
 
-$currentUser = $_SESSION['logged_user'];
+}
+
+// $posts=R::find('posts', 'ORDER BY id DESC');
+
+//dd($posts);
 
 ob_start();
 include ROOT . "/templates/_parts/_header.tpl";
-include ROOT . "/templates/profile/profile.tpl";
+include ROOT . "/templates/blog/blog-post.tpl";
 $content = ob_get_contents();
 ob_end_clean();
 

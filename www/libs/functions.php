@@ -7,10 +7,33 @@ function dd($params){
 	die();
 }
 
+function mbCutString($string, $length, $postfix = '...', $encoding='UTF-8'){
+
+	$strLen = mb_strlen($string, $encoding);
+	$temp = mb_substr($string, 0,$length, $encoding);
+	$posLastWord = mb_strripos($temp, " ", 0, $encoding);
+	
+	if ($strLen>=$length) {
+		$result = mb_substr($temp, 0,$posLastWord, $encoding);
+		return $result . $postfix;
+	} else{
+		return $temp;
+	}
+}
+
 function avatar($filename){
 		if($filename!='' && file_exists(ROOT . 'usercontent/avatar/' . $filename)){
 
 			echo "<img src=" . HOST . "usercontent/avatar/" . $filename . " title=" . $_SESSION['logged_user']['firstname'] . " " . $_SESSION['logged_user']['lastname'] . "/>";
+		}
+}
+
+function getPostImg($filename){
+		if($filename!='' && file_exists(ROOT . 'usercontent/blog/' . $filename)){
+
+			echo "<img src=" . HOST . "usercontent/blog/" . $filename . " title=" . $filename . "/>";
+		} else{
+			echo "<img src=" . HOST . "/templates/assets/img/paceholders/no-photo.png title=no-photo.png/>";
 		}
 }
 

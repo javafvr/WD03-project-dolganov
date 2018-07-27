@@ -5,3 +5,8 @@
   background: -o-linear-gradient(top, (#a4d88f, #4c9243);
   background: linear-gradient(top, (#a4d88f, #4c9243);
 }
+
+.card-post__img {
+	background-color: #fff;
+}
+

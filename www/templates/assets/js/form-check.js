@@ -37,7 +37,12 @@ $(document).ready(function() {
 						value = input.val().trim();
 						msg = input.attr('data-error');
 						required = input.attr('data-valid') =='required';
-						inputType = input.attr('type').toLowerCase();
+						// Атрибут type у textarea отсутствует
+						if (typeof input.attr('type') === "undefined"){
+							inputType ='textarea';
+						}else{
+							inputType = input.attr('type').toLowerCase();
+						}
 
 					if (value !=='') {
 
@@ -66,7 +71,7 @@ $(document).ready(function() {
 			},
 			
 			_showError: function(val, msg) {
-				var	_errorMsg = $('<div class="error error-hide error__title">' + msg + '</div>');
+				var	_errorMsg = $('<div class="error error-hide error__title mb-5">' + msg + '</div>');
 				_errorMsg.insertBefore(val);
 				_errorMsg.fadeIn(2000);
 				isValid: false;
