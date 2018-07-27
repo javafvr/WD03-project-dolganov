@@ -21,10 +21,10 @@ function mbCutString($string, $length, $postfix = '...', $encoding='UTF-8'){
 	}
 }
 
-function avatar($filename){
-		if($filename!='' && file_exists(ROOT . 'usercontent/avatar/' . $filename)){
+function avatar($fileName){
+		if($fileName!='' && file_exists(ROOT . 'usercontent/avatar/' . $fileName)){
 
-			echo "<img src=" . HOST . "usercontent/avatar/" . $filename . " title=" . $_SESSION['logged_user']['firstname'] . " " . $_SESSION['logged_user']['lastname'] . "/>";
+			echo "<img src=" . HOST . "usercontent/avatar/" . $fileName . " alt='" . $_SESSION['logged_user']['firstname'] . " " . $_SESSION['logged_user']['lastname'] . "'/>";
 		}
 }
 
