@@ -1,4 +1,14 @@
-<?php 
+<?php
+
+
+function dataFromPost($fieldName, $array){
+	if (@$_POST[$fieldName] != ''){
+		echo $_POST[$fieldName];
+	}else{
+		echo $array[$fieldName];
+	}
+}
+
 
 function dd($params){
 	echo '<pre>';

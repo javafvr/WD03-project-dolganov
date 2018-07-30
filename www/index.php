@@ -64,6 +64,14 @@ switch ($uri[0]) {
 		include ROOT . "modules/contacts/index.php";
 		break;
 
+	case 'contacts-edit':
+		include ROOT . "modules/contacts/edit.php";
+		break;
+
+	case 'messages':
+		include ROOT . "modules/contacts/messages.php";
+		break;
+
 	case 'profile':
 		include ROOT . "modules/profile/index.php";
 		break;
