@@ -1,6 +1,6 @@
 <div class="header-user">
 	<div class="avatar avatar--small">
-		<?php avatar($currentUser->avatar_small);?>
+		<?php getAvatar($currentUser->avatar_small, $currentUser->firstname . ' ' . $currentUser->lastname);?>
 	</div>
 	<a class="header-user__name" href="<?=HOST?>profile">
 	<?php 
