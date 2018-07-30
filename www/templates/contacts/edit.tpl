@@ -42,8 +42,16 @@
 				<input class="input" type="text" name="github" placeholder="Введите ссылку на профиль" value="<?php dataFromPost("github", $contacts); ?>"/>
 			</div>
 			<div class="col-md-3">
+				<div class="title-6">CodePen</div>
+				<input class="input" type="text" name="codepen" placeholder="Введите ссылку на профиль" value="<?php dataFromPost("codepen", $contacts); ?>"/>
+			</div>
+			<div class="col-md-3">
 				<div class="title-6">Twitter</div>
 				<input class="input" type="text" name="twitter" placeholder="Введите ссылку на профиль" value="<?php dataFromPost("twitter", $contacts); ?>"/>
+			</div>
+			<div class="col-md-3">
+				<div class="title-6">instagram</div>
+				<input class="input" type="text" name="instagram" placeholder="Введите ссылку на профиль" value="<?php dataFromPost("instagram", $contacts); ?>"/>
 			</div>
 		</div>
 		<div class="row mt-15">

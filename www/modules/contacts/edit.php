@@ -39,7 +39,9 @@ if (isset($_POST['contactsUpdate'])) {
 		$contacts->vk = htmlentities($_POST['vk']);
 		$contacts->fb = htmlentities($_POST['fb']);
 		$contacts->github = htmlentities($_POST['github']);
+		$contacts->codepen = htmlentities($_POST['codepen']);
 		$contacts->twitter = htmlentities($_POST['twitter']);
+		$contacts->instagram = htmlentities($_POST['instagram']);
 		$contacts->skype = htmlentities($_POST['skype']);
 
 		R::store($contacts);

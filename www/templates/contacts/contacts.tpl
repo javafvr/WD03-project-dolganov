@@ -1,62 +1,50 @@
 <div class="container pt-55 pb-80">
-	<div class="row justify-content-end">
-		<div class="col-md-auto"><a class="button button--edit" href="<?=HOST?>contacts-edit">Редактировать</a></div>
-		<div class="col-md-auto"><a class="button" href="<?=HOST?>messages">Сообщения</a></div>
-	</div>
+
+	<?php if (isAdmin()){?>
+		<div class="row justify-content-end">
+			<div class="col-md-auto"><a class="button button--edit" href="<?=HOST?>contacts-edit">Редактировать</a></div>
+			<div class="col-md-auto"><a class="button" href="<?=HOST?>messages">Сообщения</a></div>
+		</div>
+	<?}?>
 	<div class="row">
 		<div class="col-5">
 			<h1 class="title-1">Контакты</h1>
 			<table class="contacts-table text-left">
 				<tr>
-					<?php if ($contacts['vk']!=''){?>
-						<th class="contacts-table__index">Email</th>
-						<td class="contacts-table__value pb-10"><a href="mailto:<?=$contacts['email']?>"><?=$contacts['email']?></a>
-						</td>
-					<?}?>
+					<?=getContactsItem('email', 'Email');?>
 				</tr>
 				<tr>
-					<?php if ($contacts['vk']!=''){?>
-						<th class="contacts-table__index">Skype</th>
-						<td class="contacts-table__value pb-10">
-							<a href="skype:<?=$contacts['skype']?>?chat"><?=$contacts['skype']?></a>
-						</td>
-					<?}?>
+					<?=getContactsItem('skype', 'Skype');?>
 				</tr>
 				<tr>
-					<th class="contacts-table__index" rowspan="3">Социальные сети</th>
-					<?php if ($contacts['vk']!=''){?>
-						<td class="contacts-table__value contacts-table__value--bold pb-10">
-							<a href="<?=$contacts['vk']?>" target="_blank">Профиль Вконтакте</a>
-						</td>
-					<?}?>
+					<?=getContactsItem('github', 'GitHub');?>
 				</tr>
 				<tr>
-					<?php if ($contacts['fb']!=''){?>
-						<td class="contacts-table__value contacts-table__value--bold pb-10"><a href="<?=$contacts['fb']?>" target="_blank">Профиль Facebook</a>
-						</td>
-					<?}?>
+					<?=getContactsItem('codepen', 'CodePen');?>
+				</tr>
+				
+				<?php if (!($contacts['instagram']="" && $contacts['twitter']="" && $contacts['vk']="" && $contacts['fb']="")){?>
+
+					<tr>
+						<th class="contacts-table__index" rowspan="4">Социальные сети</th>
+						<?=getContactsItem('vk', 'Профиль Вконтакте');?>
+					</tr>
+					<tr>
+						<?=getContactsItem('fb', 'Профиль Facebook');?>
+					</tr>
+					<tr>
+						<?=getContactsItem('instagram', 'Профиль Instagram');?>
+					</tr>
+					<tr>
+						<?=getContactsItem('twitter', 'Профиль Twitter');?>
+					</tr>
+
+				<?}?>
+				<tr>
+					<?=getContactsItem('phone', 'Телефон');?>
 				</tr>
 				<tr>
-					<?php if ($contacts['github']!=''){?>
-						<td class="contacts-table__value contacts-table__value--bold pb-20">
-							<a href="<?=$contacts['github']?>" target="_blank">Профиль GitHub</a>
-						</td>
-					<?}?>
-				</tr>
-				<tr>
-					<?php if ($contacts['phone']!=''){?>
-						<th class="contacts-table__index">Телефон</th>
-						<td class="contacts-table__value pb-10"><?=$contacts['phone']?>
-							
-						</td>
-					<?}?>
-				</tr>
-				<tr>
-					<?php if ($contacts['phone']!=''){?>
-						<th class="contacts-table__index">Адрес</th>
-						<td class="contacts-table__value"><?=$contacts['address']?>
-						</td>
-					<?}?>
+					<?=getContactsItem('address', 'Адрес');?>
 				</tr>
 			</table>
 		</div>

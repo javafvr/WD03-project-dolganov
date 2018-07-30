@@ -1,5 +1,41 @@
 <?php
 
+function getContactsItem($name = '', $title = ''){
+	global $contacts;
+	
+	if ($contacts[$name]!=''){
+		if ($name=='email') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>
+				<a href='mailto:" . $contacts[$name] . "'>" . $contacts[$name] . "</a></td>";
+
+		} else if ($name=='phone') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>
+				<a href='tel:" . $contacts[$name] . "'>+" . $contacts[$name] . "</a></td>";
+
+		} else if ($name=='skype') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>
+				<a href='skype:" . $contacts[$name] . "?chat'>" . $contacts[$name] . "</a></td>";
+		} else if ($name=='address') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>" . $contacts[$name] . "</td>";
+		} else if ($name=='vk' || $name=='fb' || $name=='twitter' || $name=='instagram'){
+
+			echo	"<td class='contacts-table__value contacts-table__value--bold pb-10'>
+				<a href='" . $contacts[$name] . "' target='_blank'>" . $title . "</a></td>";
+		} else {
+
+			echo	"<th class='contacts-table__index'>" . $title . "</th><td class='contacts-table__value pb-10'>
+				<a href='" . $contacts[$name] . "' target='_blank'>" . $contacts[$name] . "</a></td>";
+		}	
+	}
+}
 
 function dataFromPost($fieldName, $array){
 	if (@$_POST[$fieldName] != ''){
@@ -31,10 +67,9 @@ function mbCutString($string, $length, $postfix = '...', $encoding='UTF-8'){
 	}
 }
 
-function avatar($fileName){
+function getAvatar($fileName, $alt){
 		if($fileName!='' && file_exists(ROOT . 'usercontent/avatar/' . $fileName)){
-
-			echo "<img src=" . HOST . "usercontent/avatar/" . $fileName . " alt='" . $_SESSION['logged_user']['firstname'] . " " . $_SESSION['logged_user']['lastname'] . "'/>";
+				echo "<img src=" . HOST . "usercontent/avatar/" . $fileName . " alt='" . $alt . "'/>";
 		}
 }
 

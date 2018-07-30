@@ -1,7 +1,7 @@
 <div class="header-admin">
 	<div class="header-admin__user">
 		<div class="avatar avatar--small">
-			<?php avatar($currentUser->avatar_small);?>
+			<?php getAvatar($currentUser->avatar_small, $currentUser->firstname . ' ' . $currentUser->lastname);?>
 		</div>
 		<div class="header-admin__user-data">
 			<a class="header-admin__name" href="<?=HOST?>profile">
