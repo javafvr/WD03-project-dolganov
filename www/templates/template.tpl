@@ -1,7 +1,11 @@
-<!-- <aside>
-	<h1>Sidebar</h1>
-</aside> -->
+<body class="home-page stiky-footer">
 
+<div class="page-content"></div>
+<div class="page-footer">
+	
 <?php
-echo $content;
+	echo $content;
  ?>
+
+	
+</div>

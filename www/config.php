@@ -5,11 +5,15 @@ define('DB_NAME', 'WD03-project-dolganov');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-// Путь до корневой директории
-define('HOST', $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/');
 
-// Путь до файла физически
-define('ROOT', dirname(__FILE__).'/');
+// Site settings
+define('SITE_NAME', 'Сайт портфолио Долганов Дмитрий');
+define('SITE_EMAIL', 'inet72@gmail.com');
+define('ADMIN_EMAIL', 'inet72@gmail.com');
+
+
+
+
 
 
 
