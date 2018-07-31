@@ -3,7 +3,7 @@
 		<div class="user-message__date">
 			<? echo rus_date("j F Y H:i", strtotime($message['date_time']));?>
 		</div>
-		<a class="button button--delete" href="#">Удалить</a>
+		<a class="button button--delete" href="<?=HOST?>message-delete?id=<?=$message['id']?>">Удалить</a>
 	</div>
 	<div class="user-message__from">
 		<div class="user-message__name">

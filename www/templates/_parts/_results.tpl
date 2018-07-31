@@ -33,3 +33,8 @@
 		Сообщение отправлено!
 	</div>
 <?}?>
+<?php if ($_GET['result'] == 'messageDeleted'){?>
+	<div class='error error__title mb-15' data-notify-hide>
+		Сообщение удалено!
+	</div>
+<?}?>
