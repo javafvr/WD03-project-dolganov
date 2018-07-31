@@ -5,52 +5,69 @@ $title = "Контакты";
 $contacts = R::load('contacts', 1);
 
 
-// if (isset($_GET['id'])) {
-// 	$sql = 'SELECT 
-// 		posts.id, posts.title, posts.text, posts.post_img, posts.date_time, posts.update_time, posts.author_id, posts.category, 
-// 		users.firstname, users.lastname,
-// 		categories.cat_title
-// 		FROM `posts`
-// 		INNER JOIN categories ON posts.category = categories.id
-// 		INNER JOIN users ON posts.author_id = users.id
-// 		WHERE posts.id = ' . $_GET['id'] . ' LIMIT 1';
+if (isset($_POST['sendMessage'])) {
+		if (trim($_POST['firstname'] =='')) {
+			$errors[]=['title'=>'Введите имя'];
+		}
+		if (trim($_POST['email'] =='')) {
+			$errors[]=['title'=>'Введите email'];
+		}
 
-// 	$post = R::getALL($sql)[0];
-	
-// 	$authorName = $post['firstname'] . " " . $post['lastname'];
+		if (trim($_POST['message'] =='')) {
+			$errors[]=['title'=>'Введите содержание сообщения'];
+		}
 
-	
+		if (empty($errors)) {
+			$message = R::dispense('messages');
+			$message->firstname = htmlentities($_POST['firstname']);
+			// $message->user_id = if isLogged();
+			$message->email = htmlentities($_POST['email']);
+			$message->message = htmlentities($_POST['message']);
+			$message->dateTime = R::isoDateTime();
 
-// 	$sql = 'SELECT 
-// 				comments.text, comments.date_time, comments.user_id, users.firstname, users.lastname, users.avatar_small 
-// 			FROM `comments` 
-// 			INNER JOIN users ON comments.user_id = users.id
-// 			WHERE comments.post_id = ' . $_GET['id'];
+			if (isset($_FILES['file']['name']) && $_FILES['file']['tmp_name'] != '') {
+			
+			$fileName = $_FILES['file']['name'];
+			$fileTmpLoc = $_FILES['file']['tmp_name'];
+			$fileType = $_FILES['file']['type'];
+			$fileSize = $_FILES['file']['size'];
+			$fileErrorMsg = $_FILES['file']['error'];
+			$kaboom = explode('.', $fileName);
+			$fileExt = end($kaboom);
 
-// 	$comments = R::getALL($sql);
+			if ($fileSize > 4194304) {
+				$errors[] = ['title' => 'Файл не должен быть более 4 Mb'];	
+			}
 
+			if(!preg_match("/.(gif|jpg|png)$/i", $fileName)){
+				$errors[] = [
+								'title' => 'Неверный формат изображения', 
+								'desc' => '<p>Файл изображения должен быть в формате gif, jpg, jpeg или png</p>'
+							];
+			}
 
+			if ($fileErrorMsg) {
+				$errors[] = ['title' => 'При загрузке изображения произошла ошибка'];
+			}
 
-// 	$title = $post['title'];
-// }
+			$postImgFolderLocation = ROOT . 'usercontent/upload_files/';
+			$db_file_name = rand(100000000000, 999999999999) . "." . $fileExt;
+			$uploadfile = $postImgFolderLocation . $db_file_name;
+			$moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
 
+			if (!$moveResult) {
+				$errors[] = ['title' => 'Ошибка загрузки файла'];
+			}
 
-// if (isset($_POST['addComment'])) {
-// 	if (trim($_POST['commentText'] =='')) {
-// 		$errors[]=['title'=>'Введите содержание комментария'];
-// 	}
+			$message->message_filename_original = $fileName;
+			$message->message_filename = $db_file_name;
 
-// 	if (empty($errors)) {
-// 		$comment = R::dispense('comments');
-// 		$comment->postId = htmlentities($_GET['id']);
-// 		$comment->userId = htmlentities($_SESSION['logged_user']['id']);
-// 		$comment->text = htmlentities($_POST['commentText']);
-// 		$comment->dateTime = R::isoDateTime();
-// 		R::store($comment);
-// 		header('Location: ' . HOST . 'blog/post?id=' . $_GET['id']);
-// 		exit();
-// 	}
-// }
+			}
+
+			R::store($message);
+			$success[]=['title' => 'Сообщение отправлено успешно'];
+		}
+}
 
 
 

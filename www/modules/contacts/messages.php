@@ -1,4 +1,15 @@
 <?
+
+if (!isAdmin()) {
+	header("Location: " . HOST);
+	die();
+}
+
+$title = "Сообщения";
+
+$messages = R::find('messages', 'ORDER BY id DESC');
+
+
 ob_start();
 include ROOT . "/templates/_parts/_header.tpl";
 include ROOT . "/templates/contacts/messages.tpl";

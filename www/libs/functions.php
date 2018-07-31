@@ -82,6 +82,21 @@ function getPostImg($filename){
 		}
 }
 
+function getFileLink($filenameOrig, $filename){
+		if($filename!='' && file_exists(ROOT . 'usercontent/upload_files/' . $filename)){
+
+		echo "<div class='user-message__attachments'>
+				<div class='user-message__attachments-name'>Прикрепленные файлы:</div>
+				<a class='button--link' href='" . HOST . "usercontent/upload_files/" . $filename . "' download='". $filenameOrig . "'>
+				". $filenameOrig . "
+				</a>
+				</div>";
+		} else{
+			// echo "<img src=" . HOST . "/templates/assets/img/paceholders/no-photo.png title=no-photo.png/>";
+		}
+}
+
+
 function isAdmin(){
 	$result = false;
 	if ( isset($_SESSION['logged_user']) && $_SESSION['login'] == 1 ) {

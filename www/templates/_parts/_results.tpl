@@ -28,3 +28,8 @@
 		Пост успешно удален!
 	</div>
 <?}?>
+<?php if ($_GET['result'] == 'messageSent'){?>
+	<div class='error error__title error__title--success' data-notify-hide>
+		Сообщение отправлено!
+	</div>
+<?}?>

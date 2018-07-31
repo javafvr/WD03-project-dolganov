@@ -6,6 +6,7 @@
 			<div class="col-md-auto"><a class="button" href="<?=HOST?>messages">Сообщения</a></div>
 		</div>
 	<?}?>
+
 	<div class="row">
 		<div class="col-5">
 			<h1 class="title-1">Контакты</h1>
@@ -50,7 +51,16 @@
 		</div>
 		<div class="col-4 offset-1">
 			<div class="title-1">Связаться со мной</div>
-			<form class="contact-form"><input class="input" type="text" name="firstname" placeholder="Введите имя" /><input class="input" type="text" name="email" placeholder="Email" /><textarea class="textarea" name="message" placeholder="Сообщение"></textarea>
+			
+			<?php include ROOT . "/templates/_parts/_errors.tpl"; ?>
+			
+			<?php include ROOT . "/templates/_parts/_success.tpl"; ?>
+			
+
+			<form action="<?=HOST?>contacts" method="POST" class="contact-form" enctype="multipart/form-data">
+				<input class="input" type="text" name="firstname" placeholder="Введите имя" data-error = 'Введите имя' data-valid='required'/>
+				<input class="input" type="email" name="email" placeholder="Email" data-error = 'Введите email' data-valid='required' />
+				<textarea class="textarea" name="message" placeholder="Сообщение" data-error = 'Сообщение не может быть пустым!' data-valid='required'></textarea>
 				<div class="file-upload">
 					<fieldset>
 						<legend>
@@ -58,8 +68,14 @@
 							<div class="legend__descr">
 								<p>jpg, png, pdf, doc, весом до 2Мб.</p>
 							</div>
-						</legend><input class="inputfile" id="#file-1" type="file" name="file-1" data-multiple-caption="{count} файлов выбрано" multiple="multiple" /><label for="#file-1">Выбрать файл</label><span>Файл не выбран</span></fieldset>
-				</div><input class="button button--save" type="submit" value="Отправить" /></form>
+						</legend>
+						<input class="inputfile" id="#file-1" type="file" name="file" data-multiple-caption="{count} файлов выбрано" multiple="multiple" />
+						<label for="#file-1">Выбрать файл</label>
+						<span>Файл не выбран</span>
+					</fieldset>
+				</div>
+				<input name="sendMessage" class="button button--save" type="submit" value="Отправить" />
+			</form>
 		</div>
 	</div>
 </div>
