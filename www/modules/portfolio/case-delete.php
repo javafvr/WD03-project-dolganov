@@ -15,12 +15,14 @@ if (isset($_POST['caseDelete'])) {
 	$caseImgFolderLocation = ROOT . 'usercontent/portfolio/';
 
 	// Если у поста есть изображение - удаляем
-	if ($case['case_img']!="" || $case['case_img_small']!="") {
+	if ($case['case_img']!="" || $case['case_img_small']!="" || $case['case_img_small']!="") {
 		$picurl = $caseImgFolderLocation . $case['case_img'];
 		$picurlSmall = $caseImgFolderLocation . $case['case_img_small'];
+		$picurlFull = $caseImgFolderLocation . $case['case_img_small'];
 
 		if (file_exists($picurl)){unlink($picurl);}
 		if (file_exists($picurlSmall)){unlink($picurlSmall);}
+		if (file_exists($picurlFull)){unlink($picurlFull);}
 	}
 
 	R::trash($case);
