@@ -1,5 +1,43 @@
 <?php
 
+function showIndicator($title, $value, $color=''){
+	$circleDia = 120;
+	$radius = ($circleDia - 20) / 2;
+	$perimetr = 2 * pi() * $radius;
+	if ($color!='') {
+		$color = "circle__indicator--" . $color;
+	}
+
+	$offset = $perimetr * (1 - intval($value)/100);
+
+?>
+	<div class="skill-wrap">
+		<div class="indicator">
+			<svg 
+					width="<?=$circleDia?>" 
+					height="<?=$circleDia?>" 
+					class="circle" 
+					viewbox="0 0 <?=$circleDia?> <?=$circleDia?>">
+				<circle 
+					class="circle__bg" 
+					cx="<?=$circleDia / 2 ?>"
+					cy="<?=$circleDia / 2 ?>" 
+					r="<?=$radius?>">
+				</circle>
+				<circle 
+					class="circle__indicator <?=$color?>" 
+					stroke-dasharray="<?=$perimetr?>";
+					stroke-dashoffset="<?=$offset?>"
+					cx="<?=$circleDia / 2 ?>" 
+					cy="<?=$circleDia / 2 ?>" 
+					r="<?=$radius?>">
+				</circle>
+			</svg>
+			<div class="indicator__value"><?=$title?></div>
+		</div>
+	</div>
+<?}
+
 function getContactsItem($name = '', $title = ''){
 	global $contacts;
 	

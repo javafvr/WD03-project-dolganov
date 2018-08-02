@@ -38,3 +38,8 @@
 		Сообщение удалено!
 	</div>
 <?}?>
+<?php if ($_GET['result'] == 'jobAdded'){?>
+	<div class='error error__title error__title--success' data-notify-hide>
+		Место работы успешно добавлено!
+	</div>
+<?}?>
