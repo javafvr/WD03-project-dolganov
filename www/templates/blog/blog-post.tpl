@@ -43,7 +43,31 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-10 buttons-flex"><a class="button" href="#"><i class="fas fa-arrow-left"></i>&nbsp;Назад</a><a class="button" href="#">Вперед&nbsp;<i class="fas fa-arrow-right"></i></a></div>
+
+
+
+
+
+
+		<div class="col-md-10 buttons-flex">
+			<?php if ($linkPrev==''){?>
+				<a class="button" href="<?=HOST?>blog">
+				<i class="fas fa-arrow-left" ></i>&nbsp;Все работы</a>
+			<?} else{?>
+				<a class="button" href="<?=HOST?>blog/post?id=<?=$linkPrev?>">
+				<i class="fas fa-arrow-left"></i>&nbsp;Предыдущая</a>
+			<?}?>
+			<?php if ($linkNext==''){?>
+			<a class="button" href="<?=HOST?>blog">Все работы&nbsp;
+				<i class="fas fa-arrow-right"></i>
+			</a>
+			<?} else{?>
+				<a class="button" href="<?=HOST?>blog/post?id=<?=$linkNext?>">Следующая&nbsp;
+				<i class="fas fa-arrow-right"></i>
+			</a>
+			<?}?>
+		</div>
+
 	</div>
 	<div id= "comments" class="row justify-content-center">
 		<div class="col-md-10">

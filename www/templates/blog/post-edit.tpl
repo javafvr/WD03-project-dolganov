@@ -57,7 +57,7 @@
 		<div class="row mt-10">
 			<div class="col-md-10 offset-1">
 				<div class="title-8 mb-10">Содержание</div>
-				<textarea class="textarea" id='ckeditor' name="postText" placeholder="Введите сообщение" data-error = 'Введите сообщение' data-valid='required'><?=$post['text']?>
+				<textarea class="textarea" id='ckeditor' name="postText" placeholder="Введите сообщение"><?=$post['text']?>
 					
 				</textarea>
 				<? include_once ROOT . "templates/_parts/_ckEditorConnect.tpl" ?>

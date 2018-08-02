@@ -19,14 +19,6 @@ if (isset($_GET['id'])) {
 	$authorName = $case['firstname'] . " " . $case['lastname'];
 
 
-	$sql = 'SELECT 
-		portfolio.id, portfolio.title 
-		FROM `portfolio` 
-		WHERE (
-		`id` = (SELECT MAX(`id`) FROM `portfolio`WHERE `id` <' . $_GET['id'].')
-		OR 
-		`id` = (SELECT MIN(`id`) FROM `portfolio` WHERE `id` >' . $_GET['id'].'))';
-
 	$listId = R::getCol('SELECT id FROM portfolio');
 	foreach ($listId as $index => $id) {
 		if ($id == $case['id']) {
