@@ -1,3 +1,7 @@
+.header-admin {
+  padding: 45px 30px 45px 19px;
+}
+
 .error__title--success{
   background-color: #24b14f;
   background: -webkit-gradient(linear, left top, left bottom, from(#a4d88f), to(#4c9243));
@@ -10,6 +14,15 @@
 	background-color: #fff;
 }
 
+.card-portfolio__img{
+  background-color: #fff;
+}
+
+
+.single-work-title .button{
+  position: relative;
+}
+
 .button--delete{
   font-size: 16px;
   height: 44px;
@@ -19,6 +32,7 @@
 .button--small{
   font-size: 14px;
   height: 2.2em;
+  padding-top: 0.5em;
 }
 
 .file-upload__thumb {

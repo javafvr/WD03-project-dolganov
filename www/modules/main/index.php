@@ -1,4 +1,11 @@
-<?php 
+<?php
+
+$title = "Главная";
+
+$about = R::findOne('about',1);
+$posts = R::find('posts', 'ORDER BY id DESC LIMIT 3');
+$portfolio=R::find('portfolio', 'ORDER BY id DESC LIMIT 3');
+
 ob_start();
 include ROOT . "/templates/main/main.tpl";
 $content = ob_get_contents();

@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-auto">
 				<div class="avatar ">
-					<?=avatar($currentUser->avatar);?>
+					<?=getAvatar($currentUser->avatar, $currentUser->firstname . ' ' . $currentUser->lastname);?>
 				</div>
 			</div>
 			<div class="col">
@@ -38,29 +38,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="title-2">Комментарии пользователя </div>
-		<div class="comment-wrap comment-wrap--no-avatar">
-			<div class="comment__content">
-				<div class="comment__header"><a class="comment__related-to" href="#">Поездка в LA</a>
-					<div class="comment__date"><i class="far fa-clock"></i> 05 Мая 2017 года в 15:45</div>
+		<?php if ($comments!=NULL){?>
+				<div class="title-2">Комментарии пользователя </div>
+		<?}?>
+		<?php foreach ($comments as $comment){?>
+			<div class="comment-wrap comment-wrap--no-avatar">
+				<div class="comment__content">
+					<div class="comment__header"><a class="comment__related-to" href="<?=HOST?>blog/post?id=<?=$comment['post_id']?>"><?=$comment['title']?></a>
+						<div class="comment__date"><i class="far fa-clock"></i> 05 Мая 2017 года в 15:45</div>
+					</div>
+					<div class="comment__text"><?=$comment['text']?></div>
 				</div>
-				<div class="comment__text">Замечательный парк, обязательно отправлюсь туда этим летом.</div>
 			</div>
-		</div>
-		<div class="comment-wrap comment-wrap--no-avatar">
-			<div class="comment__content">
-				<div class="comment__header"><a class="comment__related-to" href="#">Ноутбук для веб-разработчиков</a>
-					<div class="comment__date"><i class="far fa-clock"></i> 15 Мая 2017 года в 10:02</div>
-				</div>
-				<div class="comment__text">Замечательный парк, обязательно отправлюсь туда этим летом.</div>
-			</div>
-		</div>
-		<div class="comment-wrap comment-wrap--no-avatar">
-			<div class="comment__content">
-				<div class="comment__header"><a class="comment__related-to" href="#">Настройка Sublime</a>
-					<div class="comment__date"><i class="far fa-clock"></i> 12 Мая 2017 года в 20:39</div>
-				</div>
-				<div class="comment__text">Замечательный парк, обязательно отправлюсь туда этим летом.</div>
-			</div>
-		</div>
-	</div>
+		<?}?>
+</div>

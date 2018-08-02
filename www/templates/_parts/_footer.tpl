@@ -2,8 +2,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-4">
-				<p>© Dream-Team</p>
-				<p>Создано с &nbsp<i class="fas fa-heart"></i>&nbsp в <a class="footer-link__style" href="#" target="_blank">WebCademy.ru</a> в 2018 году</p>
+				<p>© 	<?=getContacts('firstname')?>
+						<?=getContacts('lastname')?>
+				</p>
+				<p>Создано с &nbsp<i class="fas fa-heart"></i>&nbsp в <a class="footer-link__style" href="http://webcademy.ru/" target="_blank">WebCademy.ru</a> в 2018 году</p>
 			</div>
 			<div class="col-4">
 				<nav>
@@ -17,7 +19,14 @@
 				</nav>
 			</div>
 			<div class="col-4">
-				<div class="footer__icons"><a href="#" target="_blank"><i class="fab fa-vk"></i></a><a href="#" target="_blank"><i class="fab fa-twitter"></i></a><a href="#" target="_blank"><i class="fab fa-youtube"></i></a><a href="#" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></div>
+				<div class="footer__icons">
+					<?getSocialIcon($name='github');?>
+					<?getSocialIcon($name='codepen');?>
+					<?getSocialIcon($name='vk');?>
+					<?getSocialIcon($name='instagram');?>
+					<?getSocialIcon($name='fb');?>
+					<?getSocialIcon($name='twitter');?>
+				</div>
 			</div>
 		</div>
 	</div>

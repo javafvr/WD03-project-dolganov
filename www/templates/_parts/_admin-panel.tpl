@@ -17,13 +17,13 @@
 			<i class="fas fa-plus-circle link__icon"></i>
 			<span>Пост</span>
 		</a>
+		<a class="admin-nav__link" href="<?=HOST?>portfolio/case-new">
+			<i class="fas fa-plus-circle link__icon"></i>
+			<span>Работа</span>
+		</a>
 		<a class="admin-nav__link" href="<?=HOST?>blog/categories"> 
 			<i class="fas fa-folder link__icon"></i>
 			<span>Категории</span>
-		</a>
-		<a class="admin-nav__link" href="<?=HOST?>portfolio">
-			<i class="fas fa-plus-circle link__icon"></i>
-			<span>Работа</span>
 		</a>
 		<a class="admin-nav__link" href="<?=HOST?>about">
 			<i class="fas fa-edit link__icon"></i>

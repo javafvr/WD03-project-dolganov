@@ -22,7 +22,7 @@ if (isset($_POST['postUpdate'])) {
 	if (empty($errors)) {
 		// $post = R::dispense('posts');
 		$post->title = htmlentities($_POST['postTitle']);
-		$post->text = htmlentities($_POST['postText']);
+		$post->text = $_POST['postText'];
 		$post->category = htmlentities($_POST['postCat']);
 		$post->authorId = $_SESSION['logged_user']['id'];
 		$post->updateTime = R::isoDateTime();
