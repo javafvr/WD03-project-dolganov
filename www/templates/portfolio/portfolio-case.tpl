@@ -43,9 +43,12 @@
 				</div>
 				<div class="row justify-content-center">
 					<div class="col">
-						<a class="single-work-title__img" href="<?=HOST?>usercontent/portfolio/<?=$case['case_img']?>" target="_blank">
-							<?=getCaseImg($case['case_img']);?>
-						</a>
+			<a 
+			class="single-work-title__img" 
+			href="<?=HOST?>usercontent/portfolio/<?=$case['case_img_full']?>" 
+			target="_blank">
+				<?=getCaseImg($case['case_img']);?>
+			</a>
 					
 					</div>
 				</div>

@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
 	$sql = 'SELECT 
 		portfolio.id, portfolio.title, portfolio.description, 
 		portfolio.description_result, portfolio.description_tech,
-		portfolio.git_link, portfolio.hosting_link, portfolio.case_img,
+		portfolio.git_link, portfolio.hosting_link, portfolio.case_img,portfolio.case_img_full,
 		portfolio.date_time, portfolio.author_id, portfolio.category,
 		users.firstname, users.lastname,
 		categories.cat_title
@@ -32,17 +32,6 @@ if (isset($_GET['id'])) {
 		}
 	}
 	
-	
-	// $sql = 'SELECT 
-	// 			comments.text, comments.date_time, comments.user_id, users.firstname, users.lastname, users.avatar_small 
-	// 		FROM `comments` 
-	// 		INNER JOIN users ON comments.user_id = users.id
-	// 		WHERE comments.post_id = ' . $_GET['id'];
-
-	// $comments = R::getALL($sql);
-
-	// $case = R::load();
-
 	$title = $case['title'];
 }
 

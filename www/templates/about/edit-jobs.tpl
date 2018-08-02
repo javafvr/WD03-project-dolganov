@@ -23,9 +23,10 @@
 				placeholder="Введите название должности" 
 				value="<?=@$_POST['title']?>" />
 			<div class="title-6">Описание работы, должностные обязанности, достигнутые результаты</div>
-			<textarea class="textarea" name="description" placeholder="Напишите интересное краткое содержательное описание">
+			<textarea id="ckeditor" class="textarea" name="description" placeholder="Напишите интересное краткое содержательное описание">
 				<?=@$_POST['description']?>
 			</textarea>
+			<? include_once ROOT . "templates/_parts/_ckEditorConnect.tpl" ?>
 			<input type="submit" name="newJob" class="button button--save" value="Добавить">
 		</div>
 		<div class="row mt-35 mb-120">

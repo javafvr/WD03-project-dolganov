@@ -79,6 +79,17 @@ if (isset($_POST['caseNew'])) {
 
 			include_once ROOT . "/libs/image_resize_imagick.php";
 
+			// Файл полностью без обрезки, для портфолио
+			$target_file = $caseImgFolderLocation . $db_file_name;
+			$full_file = "full-" . $db_file_name;
+			$new_file =$caseImgFolderLocation . $full_file;
+			$copyResult = copy($target_file, $new_file);
+			if ($copyResult) {
+				$portfolio->caseImgFull =$full_file;
+			} else{
+				$errors[] = ['title' => 'Ошибка загрузки файла'];
+			}
+
 			$target_file = $caseImgFolderLocation . $db_file_name;
 			$resized_file = $caseImgFolderLocation . $db_file_name;
 			$wmax =920;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 02 2018 г., 18:10
+-- Время создания: Авг 02 2018 г., 21:47
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -150,9 +150,10 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`id`, `period`, `title`, `description`) VALUES
-(1, 'февраль 2017 &mdash; по настоящее время', 'Удалить Frontend разработчик, Вконтактe, mail.ru group', 'Работы в команде Вконтакте. Работал в команде над обновление сервиса Музыка, работа над видео разделом. Создание видеоплеера. Создание кроссбраузерных компонентов. Работа над оптимизацией скорости загрузки медиа контента.'),
-(2, 'февраль 2017 &mdash; по настоящее время', 'Frontend разработчик, Вконтактe, mail.ru group', 'Работы в команде Вконтакте. Работал в команде над обновление сервиса Музыка, работа над видео разделом. Создание видеоплеера. Создание кроссбраузерных компонентов. Работа над оптимизацией скорости загрузки медиа контента.'),
-(3, 'февраль 2017 &mdash; по настоящее время', 'Frontend разработчик, Вконтактe, mail.ru group', 'Работы в команде Вконтакте. Работал в команде над обновление сервиса Музыка, работа над видео разделом. Создание видеоплеера. Создание кроссбраузерных компонентов. Работа над оптимизацией скорости загрузки медиа контента.');
+(1, 'Сентбярь 2010 &mdash; Май 2015', '&laquo;ООО УК Дина&raquo; &mdash; Старший программист 1С.', '- Поддержка и доработка конфигураций (Альфа-авто, БП, ЗуП, - Аренда недвижимости);\r\n- Поддержка и обновление серверов 1С;\r\n- Составление технической документации;			'),
+(2, 'Дай 2015 &mdash; февраль 2016', 'ООО \"ТД Русойл\" — Программист 1С', '- Поддержка и доработка конфигураций: (Альфа-авто 5.1 (SCANIA), ЗуП, БП)\r\n- Поддержка и обновление серверов 1С:\r\n- Обновление каталога MULTI, и обеспечение его работы в связке с 1С.'),
+(3, 'Февраль 2016 &mdash; Декабрь 2017', 'ООО \"Лаборатория цифрового производства\" — Инженер по 3D печати', '- Техническое обслуживание 3D принтеров MakerBot 2x, Createbot, Picaso\r\n- Печать коммерческих заказов\r\n- Администрирование сети на 40 компьютеров + файловый сервер (Ubuntu)\r\n- 3D Моделирование коммерческих заказов в OpenScad\r\n- Подготовка и проведение мас'),
+(4, 'декабрь 2017 &mdash; по настоящее время', 'Фрилансер, веб-разработчик.', 'Обучение на курсах web-разработки webcademy.ru, верстка учебная и на заказ');
 
 -- --------------------------------------------------------
 
@@ -198,16 +199,20 @@ CREATE TABLE `portfolio` (
   `case_img` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `case_img_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `git_link` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `hosting_link` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+  `hosting_link` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `case_img_full` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `portfolio`
 --
 
-INSERT INTO `portfolio` (`id`, `title`, `description`, `description_result`, `description_tech`, `category`, `author_id`, `date_time`, `case_img`, `case_img_small`, `git_link`, `hosting_link`) VALUES
-(1, 'Graff72 - верстка Landing Page ', 'Верстка Landing Page Graff72 на заказ без макета ', 'Сайт уже работает\r\nСтоимость работ: 5000 рублей', '<ul>\r\n	<li>HTML</li>\r\n	<li>CSS</li>\r\n	<li>Bootstrap 4</li>\r\n	<li>Gulp</li>\r\n	<li>Pug</li>\r\n	<li>PHP</li>\r\n</ul>\r\n', 5, 1, '2018-08-02 08:15:25', '377610409.jpg', 'small-377610409.jpg', 'https://github.com/javafvr/graff-site', 'graff72.ru'),
-(2, 'Organica - верстка учебного макета ', 'Верстка учебного макета Organica, это моя первая работа в рамках обучения в онлайн школе webcademy.ru', 'Макет был сверстан в срок, ошибки были, но я их очень быстро устранил)', '<ul>\r\n	<li>\r\n	<h2 style=\"font-style:italic\">HTML</h2>\r\n	</li>\r\n	<li>\r\n	<h2 style=\"font-style:italic\">CSS</h2>\r\n	</li>\r\n</ul>\r\n', 5, 1, '2018-08-02 08:16:09', '1140678788.png', 'small-1140678788.png', 'https://github.com/javafvr/organica', '');
+INSERT INTO `portfolio` (`id`, `title`, `description`, `description_result`, `description_tech`, `category`, `author_id`, `date_time`, `case_img`, `case_img_small`, `git_link`, `hosting_link`, `case_img_full`) VALUES
+(1, 'Graff72 - верстка Landing Page ', 'Верстка Landing Page Graff72 на заказ без макета ', 'Сайт уже работает\r\nСтоимость работ: 5000 рублей', '<ul>\r\n	<li>HTML</li>\r\n	<li>CSS</li>\r\n	<li>Bootstrap 4</li>\r\n	<li>Gulp</li>\r\n	<li>Pug</li>\r\n	<li>PHP</li>\r\n</ul>\r\n', 5, 1, '2018-08-02 08:15:25', '-67493045.jpg', 'small--67493045.jpg', 'https://github.com/javafvr/graff-site', 'https://www.graff72.ru', 'full--67493045.jpg'),
+(2, 'Organica - верстка учебного макета ', 'Верстка учебного макета Organica, это моя первая работа в рамках обучения в онлайн школе webcademy.ru', 'Макет был сверстан в срок, ошибки были, но я их очень быстро устранил)', '										<ul>\r\n	<li>\r\n	<h2 style=\"font-style:italic\">HTML</h2>\r\n	</li>\r\n	<li>\r\n	<h2 style=\"font-style:italic\">CSS</h2>\r\n	</li>\r\n</ul>\r\n								', 5, 1, '2018-08-02 08:16:09', '137683874.png', 'small-137683874.png', 'https://github.com/javafvr/organica', '', 'full-137683874.png'),
+(5, 'Apollo - учебная верстка макета', 'Apollo - учебная верстка макета', 'Apollo - учебная верстка макета', 'HTML CSS JS Bootstrap', 5, 1, '2018-08-02 20:54:33', '-101531066.png', 'small--101531066.png', '', '', 'full--101531066.png'),
+(6, 'INTERIOR - Учебная верстка макета', 'INTERIOR - Учебная верстка макета', 'INTERIOR - Учебная верстка макета', 'HTML CSS JS', 5, 1, '2018-08-02 21:03:35', '294887345.jpg', 'small-294887345.jpg', '', '', 'full-294887345.jpg'),
+(7, 'dolganovdn.ru - Учебная верстка сайта портфолио', 'dolganovdn.ru - Учебная верстка сайта портфолио', 'dolganovdn.ru - Учебная верстка сайта портфолио', '<ul>\r\n	<li>HTML</li>\r\n	<li>CSS</li>\r\n	<li>JS</li>\r\n	<li>Jquery</li>\r\n	<li>Bootstrap</li>\r\n</ul>\r\n', 5, 1, '2018-08-02 21:08:26', '-466639242.jpg', 'small--466639242.jpg', 'https://github.com/javafvr/portfolio', '', 'full--466639242.jpg');
 
 -- --------------------------------------------------------
 
@@ -404,7 +409,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT для таблицы `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
@@ -416,7 +421,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `portfolio`
 --
 ALTER TABLE `portfolio`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`

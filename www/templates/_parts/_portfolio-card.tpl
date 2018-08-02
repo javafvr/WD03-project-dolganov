@@ -4,7 +4,7 @@
 			<?=getCaseImg($case->caseImgSmall);?>
 		</div>
 		<div class="card-portfolio__title">
-			<?=mbCutString($case->title,24,'...','UTF-8');?>
+			<?=mbCutString($case->title,26,'...','UTF-8');?>
 		</div>
 		<a class="button" href="<?=HOST?>portfolio/case?id=<?=$case->id?>">Смотреть кейс</a>
 	</div>

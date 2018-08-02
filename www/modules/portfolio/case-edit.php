@@ -71,15 +71,17 @@ if (isset($_POST['caseUpdate'])) {
 			$caseImgFolderLocation = ROOT . 'usercontent/portfolio/';
 
 			// Если изображение поста уже есть - удаляем
-			if ($case['case_img']!="" || $case['case_img_small']!="") {
-				$picurl = $postImgFolderLocation . $case['case_img'];
-				$picurlSmall = $postImgFolderLocation . $case['case_img_small'];
+			if ($case['case_img']!="" || $case['case_img_small']!="" || $case['case_img_full']!="") {
+				$picurl = $caseImgFolderLocation . $case['case_img'];
+				$picurlSmall = $caseImgFolderLocation . $case['case_img_small'];
+				$picurlFull = $caseImgFolderLocation . $case['case_img_full'];
 
 				if (file_exists($picurl)){unlink($picurl);}
 				if (file_exists($picurlSmall)){unlink($picurlSmall);}
+				if (file_exists($picurlFull)){unlink($picurlFull);}
 			}
 
-			$db_file_name = rand(100000000000, 999999999999) . "." . $fileExt;
+			$db_file_name =rand(100000000000, 999999999999) . "." . $fileExt;
 			$uploadfile = $caseImgFolderLocation . $db_file_name;
 			$moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
 
@@ -88,6 +90,17 @@ if (isset($_POST['caseUpdate'])) {
 			}
 
 			include_once ROOT . "/libs/image_resize_imagick.php";
+
+			// Файл полностью без обрезки, для портфолио
+			$target_file = $caseImgFolderLocation . $db_file_name;
+			$full_file = "full-" . $db_file_name;
+			$new_file =$caseImgFolderLocation . $full_file;
+			$copyResult = copy($target_file, $new_file);
+			if ($copyResult) {
+				$case->caseImgFull =$full_file;
+			} else{
+				$errors[] = ['title' => 'Ошибка загрузки файла'];
+			}
 
 			$target_file = $caseImgFolderLocation . $db_file_name;
 			$resized_file = $caseImgFolderLocation . $db_file_name;

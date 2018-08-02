@@ -13,6 +13,22 @@ if (isset($_POST['profile-update'])) {
 		$errors[] = ['title' => 'Введите Email'];
 	}
 
+	if (trim($_POST['email']) !=  $currentUser->email) {
+
+		$emailExist =  R::getAll( 'select * from users where email = :email', array(':email'=>trim($_POST['email'])));
+		if($emailExist!=NULL){
+			$errors[] = ['title' => 'Email занят'];
+		}
+	}
+
+	// echo $email;
+	
+	// if (trim($_POST['email']) ==R::find( 'users', trim($_POST['email']))) {
+
+
+	// 	$errors[] = ['title' => 'Введите Email'];
+	// }
+
 	if (trim($_POST['firstname']) == '') {
 		$errors[] = ['title' => 'Введите Имя'];
 	}
