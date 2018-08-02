@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 31 2018 г., 21:40
+-- Время создания: Авг 02 2018 г., 05:40
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -31,16 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `about` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `firstname` varchar(191) DEFAULT NULL,
+  `photo` varchar(191) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `about`
 --
 
-INSERT INTO `about` (`id`, `name`, `description`) VALUES
-(1, 'Дмитрий Долганов', 'web-developer'),
-(2, 'Дмитрий Долганов', 'web-developer');
+INSERT INTO `about` (`id`, `name`, `description`, `firstname`, `photo`) VALUES
+(1, 'Дмитрий Долганов', '<p>&nbsp;</p>\r\n\r\n<p>Я веб-разработчик из Тюмени. Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.</p>\r\n\r\n<p>Этот сайт я сделал в рамках обучения в школе онлайн обучения WebCademy.<br />\r\nЧуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!</p>\r\n\r\n<h3>Что я умею</h3>\r\n\r\n<p>Меня привлекет Frontend разработка, это не только моя работа, но и хобби.</p>\r\n\r\n<p>Также знаком и могу решать не сложные задачи на Backend.</p>\r\n', 'Дмитрий Долганов', '-474466800.jpg');
 
 -- --------------------------------------------------------
 
@@ -129,6 +130,28 @@ INSERT INTO `contacts` (`id`, `email`, `phone`, `address`, `firstname`, `lastnam
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `period` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `period`, `title`, `description`) VALUES
+(1, 'февраль 2017 &mdash; по настоящее время', 'Удалить Frontend разработчик, Вконтактe, mail.ru group', 'Работы в команде Вконтакте. Работал в команде над обновление сервиса Музыка, работа над видео разделом. Создание видеоплеера. Создание кроссбраузерных компонентов. Работа над оптимизацией скорости загрузки медиа контента.'),
+(2, 'февраль 2017 &mdash; по настоящее время', 'Frontend разработчик, Вконтактe, mail.ru group', 'Работы в команде Вконтакте. Работал в команде над обновление сервиса Музыка, работа над видео разделом. Создание видеоплеера. Создание кроссбраузерных компонентов. Работа над оптимизацией скорости загрузки медиа контента.'),
+(3, 'февраль 2017 &mdash; по настоящее время', 'Frontend разработчик, Вконтактe, mail.ru group', 'Работы в команде Вконтакте. Работал в команде над обновление сервиса Музыка, работа над видео разделом. Создание видеоплеера. Создание кроссбраузерных компонентов. Работа над оптимизацией скорости загрузки медиа контента.');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `messages`
 --
 
@@ -186,6 +209,33 @@ INSERT INTO `posts` (`id`, `title`, `text`, `author_id`, `date_time`, `post_img`
 (30, 'Битриксер!!! ', '&lt;p&gt;Нервная работенка!&lt;/p&gt;\r\n', 1, '2018-07-25 23:45:26', '-135865585.jpg', 'small--135865585.jpg', 2, '2018-07-26 14:45:05'),
 (31, 'У поста нет картинки, но есть же другие посты', '&lt;p&gt;Текста тоже нет!&lt;/p&gt;\r\n', 1, '2018-07-25 23:46:08', NULL, NULL, 3, '2018-07-26 14:44:42'),
 (32, 'tgewtrewr', '&lt;p&gt;gsdgdgdsg&lt;/p&gt;\r\n', 1, '2018-07-26 00:07:02', '983949714.jpg', 'small-983949714.jpg', 3, '2018-07-26 14:42:50');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `skills`
+--
+
+CREATE TABLE `skills` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `html` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `css` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `js` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `jquery` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `php` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `mysql` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `git` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `gulp` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `bower` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `npm` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `skills`
+--
+
+INSERT INTO `skills` (`id`, `html`, `css`, `js`, `jquery`, `php`, `mysql`, `git`, `gulp`, `bower`, `npm`) VALUES
+(1, '50', '50', '40', '40', '40', '40', '30', '60', '30', '60');
 
 -- --------------------------------------------------------
 
@@ -249,6 +299,12 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `messages`
 --
 ALTER TABLE `messages`
@@ -260,6 +316,12 @@ ALTER TABLE `messages`
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `index_foreignkey_posts_author` (`author_id`);
+
+--
+-- Индексы таблицы `skills`
+--
+ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -275,7 +337,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `categories`
@@ -296,6 +358,12 @@ ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT для таблицы `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
@@ -306,6 +374,12 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT для таблицы `skills`
+--
+ALTER TABLE `skills`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
