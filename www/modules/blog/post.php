@@ -12,20 +12,30 @@ if (isset($_GET['id'])) {
 		WHERE posts.id = ' . $_GET['id'] . ' LIMIT 1';
 
 	$post = R::getALL($sql)[0];
-	
+	// dd($post);
 	$authorName = $post['firstname'] . " " . $post['lastname'];
-
-	
 
 	$sql = 'SELECT 
 				comments.text, comments.date_time, comments.user_id, users.firstname, users.lastname, users.avatar_small 
 			FROM `comments` 
 			INNER JOIN users ON comments.user_id = users.id
 			WHERE comments.post_id = ' . $_GET['id'];
-
 	$comments = R::getALL($sql);
+// dd($comments);
 
-
+	$listId = R::getCol('SELECT id FROM posts');
+	// dd($listId);
+	foreach ($listId as $index => $id) {
+		if ($id == $post['id']) {
+			if($index!=0){
+				$linkPrev = $listId[$index-1];
+			} else{
+				$linkPrev = '';
+			}
+			$linkNext = @$listId[$index+1];
+			break;
+		}
+	}
 
 	$title = $post['title'];
 }

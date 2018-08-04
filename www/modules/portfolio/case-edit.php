@@ -1,0 +1,141 @@
+<?php
+
+if (!isAdmin()) {
+	header("Location: " . HOST);
+	die();
+}
+
+$title = "Портфолио - Редактировать работу";
+
+$case = R::load('portfolio', $_GET['id']);
+
+$categories = R::find('categories', 'ORDER BY cat_title ASC');
+
+if (isset($_POST['caseUpdate'])) {
+	if (trim($_POST['title'] =='')) {
+		$errors[]=['title'=>'Введите название работы'];
+	}
+	if (trim($_POST['description'] =='')) {
+		$errors[]=['title'=>'Введите содержание работы'];
+	}
+	if (trim($_POST['descriptionResult'] =='')) {
+		$errors[]=['title'=>'Введите содержание результата работы'];
+	}
+	if (trim($_POST['descriptionTech'] =='')) {
+		$errors[]=['title'=>'Введите используемые технологии'];
+	}
+
+	if (empty($errors)) {
+		$case->title = htmlentities($_POST['title']);
+		$case->description = htmlentities($_POST['description']);
+		$case->descriptionResult = htmlentities($_POST['descriptionResult']);
+		$case->descriptionTech = $_POST['descriptionTech'];
+		$case->category = htmlentities($_POST['caseCat']);
+		$case->gitLink = htmlentities($_POST['gitLink']);
+		$case->hostingLink = htmlentities($_POST['hostingLink']);
+
+
+		if (isset($_FILES['caseImg']['name']) && $_FILES['caseImg']['tmp_name'] != '') {
+			
+			$fileName = $_FILES['caseImg']['name'];
+			$fileTmpLoc = $_FILES['caseImg']['tmp_name'];
+			$fileType = $_FILES['caseImg']['type'];
+			$fileSize = $_FILES['caseImg']['size'];
+			$fileErrorMsg = $_FILES['caseImg']['error'];
+			$kaboom = explode('.', $fileName);
+			$fileExt = end($kaboom);
+
+			list($width, $height) = getimagesize($fileTmpLoc);
+
+			if ($width < 10 || $height < 10) {
+				$errors[] = ['title' => 'Картинка имеет нулевой размер'];	
+			}
+
+			if ($fileSize > 4194304) {
+				$errors[] = ['title' => 'Файл не должен быть более 4 Mb'];	
+			}
+
+			if(!preg_match("/.(gif|jpg|png)$/i", $fileName)){
+				$errors[] = [
+								'title' => 'Неверный формат изображения', 
+								'desc' => '<p>Файл изображения должен быть в формате gif, jpg, jpeg или png</p>'
+							];
+			}
+
+			if ($fileErrorMsg) {
+				$errors[] = ['title' => 'При загрузке изображения произошла ошибка'];
+			}
+
+			// $postImg = $post;
+			// $postImgSmall = $user['avatar_small'];
+			$caseImgFolderLocation = ROOT . 'usercontent/portfolio/';
+
+			// Если изображение поста уже есть - удаляем
+			if ($case['case_img']!="" || $case['case_img_small']!="" || $case['case_img_full']!="") {
+				$picurl = $caseImgFolderLocation . $case['case_img'];
+				$picurlSmall = $caseImgFolderLocation . $case['case_img_small'];
+				$picurlFull = $caseImgFolderLocation . $case['case_img_full'];
+
+				if (file_exists($picurl)){unlink($picurl);}
+				if (file_exists($picurlSmall)){unlink($picurlSmall);}
+				if (file_exists($picurlFull)){unlink($picurlFull);}
+			}
+
+			$db_file_name =rand(100000000000, 999999999999) . "." . $fileExt;
+			$uploadfile = $caseImgFolderLocation . $db_file_name;
+			$moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
+
+			if (!$moveResult) {
+				$errors[] = ['title' => 'Ошибка загрузки файла'];
+			}
+
+			include_once ROOT . "/libs/image_resize_imagick.php";
+
+			// Файл полностью без обрезки, для портфолио
+			$target_file = $caseImgFolderLocation . $db_file_name;
+			$full_file = "full-" . $db_file_name;
+			$new_file =$caseImgFolderLocation . $full_file;
+			$copyResult = copy($target_file, $new_file);
+			if ($copyResult) {
+				$case->caseImgFull =$full_file;
+			} else{
+				$errors[] = ['title' => 'Ошибка загрузки файла'];
+			}
+
+			$target_file = $caseImgFolderLocation . $db_file_name;
+			$resized_file = $caseImgFolderLocation . $db_file_name;
+			$wmax =920;
+			$hmax =620;
+			$img = createThumbnail($target_file, $wmax, $hmax);
+			$img->writeImage($resized_file);
+			$case->caseImg = $db_file_name;
+
+			$target_file = $caseImgFolderLocation . $db_file_name;
+			$resized_file = $caseImgFolderLocation . "small-" . $db_file_name;
+			$wmax =320;
+			$hmax =140;
+			$img = createThumbnailCrop($target_file, $wmax, $hmax);
+			$img->writeImage($resized_file);
+			$case->caseImgSmall = "small-" . $db_file_name;
+
+
+		}
+
+		R::store($case);
+		header('Location: ' . HOST . "portfolio/case?id=" . $case['id'] . "&result=caseUpdated");
+	}
+}
+
+
+ob_start();
+include ROOT . "/templates/_parts/_header.tpl";
+include ROOT . "/templates/portfolio/case-edit.tpl";
+$content = ob_get_contents();
+ob_end_clean();
+
+include ROOT . "/templates/_parts/_head.tpl";
+include ROOT . "/templates/template.tpl";
+include ROOT . "/templates/_parts/_footer.tpl";
+include ROOT . "/templates/_parts/_foot.tpl";
+
+?>

@@ -1,5 +1,46 @@
 <?php
 
+function getSocialIcon($name=''){?>
+	<? if($name!='' && getContacts($name)!=''){?>
+		<? if($name=='vk'){?>
+			<a href="<?=getContacts('vk')?>" target="_blank">
+				<i class="fab fa-vk"></i>
+			</a>
+		<?} else if($name=='fb'){?>
+			<a href="<?=getContacts('fb')?>" target="_blank">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+		<?} else if($name=='twitter'){?>
+			<a href="<?=getContacts('twitter')?>" target="_blank">
+				<i class="fab fa-twitter"></i>
+			</a>
+		<?} else if($name=='youtube'){?>
+			<a href="<?=getContacts('youtube')?>" target="_blank">
+				<i class="fab fa-youtube"></i>
+			</a>
+		<?} else if($name=='instagram'){?>
+			<a href="<?=getContacts('instagram')?>" target="_blank">
+				<i class="fab fa-instagram"></i>
+			</a>
+		<?} else if($name=='github'){?>
+			<a href="<?=getContacts('github')?>" target="_blank">
+				<i class="fab fa-github-square"></i>
+			</a>
+		<?} else if($name=='codepen'){?>
+			<a href="<?=getContacts('codepen')?>" target="_blank">
+				<i class="fab fa-codepen"></i>
+			</a>
+		<?}?>
+	<?}?>
+
+<?}
+
+function getContacts($contact=''){
+	if ($contact!='') {
+		return R::load('contacts', 1)[$contact];
+	}
+}
+
 function showIndicator($title, $value, $color=''){
 	$circleDia = 120;
 	$radius = ($circleDia - 20) / 2;
@@ -115,6 +156,15 @@ function getPostImg($filename){
 		if($filename!='' && file_exists(ROOT . 'usercontent/blog/' . $filename)){
 
 			echo "<img src=" . HOST . "usercontent/blog/" . $filename . " title=" . $filename . "/>";
+		} else{
+			echo "<img src=" . HOST . "/templates/assets/img/paceholders/no-photo.png title=no-photo.png/>";
+		}
+}
+
+function getCaseImg($filename){
+		if($filename!='' && file_exists(ROOT . 'usercontent/portfolio/' . $filename)){
+
+			echo "<img src=" . HOST . "usercontent/portfolio/" . $filename . " title=" . $filename . "/>";
 		} else{
 			echo "<img src=" . HOST . "/templates/assets/img/paceholders/no-photo.png title=no-photo.png/>";
 		}

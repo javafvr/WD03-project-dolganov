@@ -131,7 +131,27 @@ switch ($uri[0]) {
 	case 'blog/category-delete':
 		include ROOT . "modules/categories/delete.php";
 		break;
-	
+	// Portfolio ROUTE
+	case 'portfolio':
+		include ROOT . "modules/portfolio/index.php";
+		break;
+
+	case 'portfolio/case-new':
+		include ROOT . "modules/portfolio/case-new.php";
+		break;
+
+	case 'portfolio/case-edit':
+		include ROOT . "modules/portfolio/case-edit.php";
+		break;
+
+	case 'portfolio/case-delete':
+		include ROOT . "modules/portfolio/case-delete.php";
+		break;
+
+	case 'portfolio/case':
+		include ROOT . "modules/portfolio/case.php";
+		break;
+
 	default:
 		include ROOT . "modules/main/index.php";
 		break;

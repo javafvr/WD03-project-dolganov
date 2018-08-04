@@ -142,7 +142,7 @@ body {
 }
 .avatar {
   overflow: hidden;
-  background: url(..//img/paceholders/avatar-placeholder-big.jpg);
+  background: url(../img/paceholders/avatar-placeholder-big.jpg);
   width: 205px;
   height: 205px;
   border-radius: 205px;
@@ -994,7 +994,7 @@ a.button--link:hover {
   height: 18px;
   background-color: #1E6791;
   border-radius: 2px;
-  background-image: url('../../img/form-ui/check.png');
+  background-image: url('../img/form-ui/check.png');
   background-repeat: no-repeat;
   background-position: center -10px;
   margin-right: 10px;
@@ -1199,7 +1199,7 @@ fieldset {
 }
 .header-bg {
   height: 200px;
-  background-image: url('../../img/bg/header-bg-1.jpg');
+  background-image: url('../img/bg/header-bg-1.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

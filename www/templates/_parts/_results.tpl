@@ -43,3 +43,13 @@
 		Место работы успешно добавлено!
 	</div>
 <?}?>
+<?php if ($_GET['result'] == 'caseUpdated'){?>
+	<div class='error error__title error__title--success mb-20' data-notify-hide>
+		Изменения сохранены!
+	</div>
+<?}?>
+<?php if ($_GET['result'] == 'caseDeleted'){?>
+	<div class='error error__title mb-20' data-notify-hide>
+		Работа удалена!
+	</div>
+<?}?>
