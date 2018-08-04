@@ -1,6 +1,6 @@
 <div class="comment-wrap">
 		<div class="avatar avatar--small">
-			<?=avatar($comment['avatar_small'])?>
+			<?php getAvatar($currentUser->avatar_small, $currentUser->firstname . ' ' . $currentUser->lastname);?>
 		</div>
 		<div class="comment__content">
 			<div class="comment__header">

@@ -4,7 +4,7 @@
 	<div class="comment-add">
 		<div class="comment-add__avatar">
 			<div class="avatar avatar--small">
-				<?php avatar($currentUser->avatar_small);?>
+				<?php getAvatar($currentUser->avatar_small, $_SESSION['logged_user']['firstname'] . $_SESSION['logged_user']['lastname']);?>
 			</div>
 		</div>
 		<form action="<?=HOST?>blog/post?id=<?=$post['id']?>" method="POST" class="comment-add__form" id="form">
