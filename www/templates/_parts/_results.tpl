@@ -28,3 +28,18 @@
 		Пост успешно удален!
 	</div>
 <?}?>
+<?php if ($_GET['result'] == 'messageSent'){?>
+	<div class='error error__title error__title--success' data-notify-hide>
+		Сообщение отправлено!
+	</div>
+<?}?>
+<?php if ($_GET['result'] == 'messageDeleted'){?>
+	<div class='error error__title mb-15' data-notify-hide>
+		Сообщение удалено!
+	</div>
+<?}?>
+<?php if ($_GET['result'] == 'jobAdded'){?>
+	<div class='error error__title error__title--success' data-notify-hide>
+		Место работы успешно добавлено!
+	</div>
+<?}?>

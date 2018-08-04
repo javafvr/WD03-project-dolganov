@@ -48,3 +48,62 @@ body::before{
       -webkit-justify-content: space-between;
               justify-content: space-between;
 }
+
+.about-text h3{
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+
+/*indicator*/
+.indicator{
+  position: relative;
+  display: inline-block;
+}
+
+.indicator__value{
+  font-size: 20px;
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-48%, -57%);
+}
+
+.circle{
+
+}
+
+.circle__bg{
+  fill: transparent;
+  stroke-width: 10px;
+  stroke: rgba(226,226,226,0.05);
+}
+.circle__indicator{
+  fill: transparent;
+  stroke-width: 10px;
+  stroke: rgba(255,255,255,0.05);
+
+  transform-origin: center center;
+  transform: rotate(-90deg);
+}
+
+.circle__indicator--yellow{
+  fill: transparent;
+  stroke-width: 10px;
+  stroke: #ffcc00;
+}
+
+.circle__indicator--green{
+  fill: transparent;
+  stroke-width: 10px;
+  stroke: #3aaa35;
+}
+
+.circle__indicator--blue{
+  fill: transparent;
+  stroke-width: 10px;
+  stroke: #009cf5;
+}
+
+/*indicator*/

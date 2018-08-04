@@ -1,4 +1,88 @@
-<?php 
+<?php
+
+function showIndicator($title, $value, $color=''){
+	$circleDia = 120;
+	$radius = ($circleDia - 20) / 2;
+	$perimetr = 2 * pi() * $radius;
+	if ($color!='') {
+		$color = "circle__indicator--" . $color;
+	}
+
+	$offset = $perimetr * (1 - intval($value)/100);
+
+?>
+	<div class="skill-wrap">
+		<div class="indicator">
+			<svg 
+					width="<?=$circleDia?>" 
+					height="<?=$circleDia?>" 
+					class="circle" 
+					viewbox="0 0 <?=$circleDia?> <?=$circleDia?>">
+				<circle 
+					class="circle__bg" 
+					cx="<?=$circleDia / 2 ?>"
+					cy="<?=$circleDia / 2 ?>" 
+					r="<?=$radius?>">
+				</circle>
+				<circle 
+					class="circle__indicator <?=$color?>" 
+					stroke-dasharray="<?=$perimetr?>";
+					stroke-dashoffset="<?=$offset?>"
+					cx="<?=$circleDia / 2 ?>" 
+					cy="<?=$circleDia / 2 ?>" 
+					r="<?=$radius?>">
+				</circle>
+			</svg>
+			<div class="indicator__value"><?=$title?></div>
+		</div>
+	</div>
+<?}
+
+function getContactsItem($name = '', $title = ''){
+	global $contacts;
+	
+	if ($contacts[$name]!=''){
+		if ($name=='email') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>
+				<a href='mailto:" . $contacts[$name] . "'>" . $contacts[$name] . "</a></td>";
+
+		} else if ($name=='phone') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>
+				<a href='tel:" . $contacts[$name] . "'>+" . $contacts[$name] . "</a></td>";
+
+		} else if ($name=='skype') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>
+				<a href='skype:" . $contacts[$name] . "?chat'>" . $contacts[$name] . "</a></td>";
+		} else if ($name=='address') {
+			
+			echo	"<th class='contacts-table__index'>" . $title . "</th>
+			<td class='contacts-table__value pb-10'>" . $contacts[$name] . "</td>";
+		} else if ($name=='vk' || $name=='fb' || $name=='twitter' || $name=='instagram'){
+
+			echo	"<td class='contacts-table__value contacts-table__value--bold pb-10'>
+				<a href='" . $contacts[$name] . "' target='_blank'>" . $title . "</a></td>";
+		} else {
+
+			echo	"<th class='contacts-table__index'>" . $title . "</th><td class='contacts-table__value pb-10'>
+				<a href='" . $contacts[$name] . "' target='_blank'>" . $contacts[$name] . "</a></td>";
+		}	
+	}
+}
+
+function dataFromPost($fieldName, $array){
+	if (@$_POST[$fieldName] != ''){
+		echo $_POST[$fieldName];
+	}else{
+		echo $array[$fieldName];
+	}
+}
+
 
 function dd($params){
 	echo '<pre>';
@@ -21,10 +105,9 @@ function mbCutString($string, $length, $postfix = '...', $encoding='UTF-8'){
 	}
 }
 
-function avatar($fileName){
+function getAvatar($fileName, $alt){
 		if($fileName!='' && file_exists(ROOT . 'usercontent/avatar/' . $fileName)){
-
-			echo "<img src=" . HOST . "usercontent/avatar/" . $fileName . " alt='" . $_SESSION['logged_user']['firstname'] . " " . $_SESSION['logged_user']['lastname'] . "'/>";
+				echo "<img src=" . HOST . "usercontent/avatar/" . $fileName . " alt='" . $alt . "'/>";
 		}
 }
 
@@ -36,6 +119,21 @@ function getPostImg($filename){
 			echo "<img src=" . HOST . "/templates/assets/img/paceholders/no-photo.png title=no-photo.png/>";
 		}
 }
+
+function getFileLink($filenameOrig, $filename){
+		if($filename!='' && file_exists(ROOT . 'usercontent/upload_files/' . $filename)){
+
+		echo "<div class='user-message__attachments'>
+				<div class='user-message__attachments-name'>Прикрепленные файлы:</div>
+				<a class='button--link' href='" . HOST . "usercontent/upload_files/" . $filename . "' download='". $filenameOrig . "'>
+				". $filenameOrig . "
+				</a>
+				</div>";
+		} else{
+			// echo "<img src=" . HOST . "/templates/assets/img/paceholders/no-photo.png title=no-photo.png/>";
+		}
+}
+
 
 function isAdmin(){
 	$result = false;
